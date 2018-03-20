@@ -29,11 +29,11 @@ enterXLarge.id = 'Enter XLarge Button'
 local function calculatePrice( event )
 	local tax = subtotal * 0.13
 	local total = subtotal + tax
-	local showSubtotal = display.newText( 'Subtotal: $' .. subtotal, 500, 900, native.systemFont, 128 )
+	local showSubtotal = display.newText( 'Subtotal: $' .. string.format("%.2f", subtotal), 500, 900, native.systemFont, 128 )
 	showSubtotal:setTextColor( 0.5, 0.8, 0 )
-	local showTax = display.newText( 'Tax: $' .. tax, 400, 1100, native.systemFont, 128 )
+	local showTax = display.newText( 'Tax: $' .. string.format("%.2f", tax), 400, 1100, native.systemFont, 128 )
 	showTax:setTextColor( 0.5, 0.8, 0 )
-	local showTotal = display.newText( 'Total: $' .. total, 500, 1300, native.systemFont, 128 )
+	local showTotal = display.newText( 'Total: $' .. string.format("%.2f", total), 500, 1300, native.systemFont, 128 )
 	showTotal:setTextColor( 0.5, 0.8, 0 )
 end
 
