@@ -11,6 +11,7 @@
 display.setDefault( 'background', 1, 1, 1 )
 
 local subtotal = nil
+local toppings 
 
 local instructions = display.newText( 'Enter # of toppings between 1-4:', 840, 200, native.systemFont, 110)
 instructions:setTextColor( 0.5, 0.8, 0)
@@ -27,6 +28,8 @@ enterXLarge.y = 600
 enterXLarge.id = 'Enter XLarge Button'
 
 local function calculatePrice( event )
+	-- calculates and shows the cost of the pizza
+	
 	local tax = subtotal * 0.13
 	local total = subtotal + tax
 	local showSubtotal = display.newText( 'Subtotal: $' .. string.format("%.2f", subtotal), 500, 900, native.systemFont, 128 )
@@ -38,9 +41,9 @@ local function calculatePrice( event )
 end
 
 local function onLargeClicked( event )
-	-- 
+	--calculates subtotal if large then calls calculate price to finish and show caluculations
 
-	local toppings = tonumber( toppingsTextField.text )
+	toppings = tonumber( toppingsTextField.text )
 
 	if toppings == 1 then
 		subtotal = 6 + 1
@@ -61,7 +64,10 @@ local function onLargeClicked( event )
 end
 
 local function onExtraLargeClicked( event )
-	local toppings = tonumber( toppingsTextField.text )
+	--calculates subtotal if extra large then calls calculate price to finish and show caluculations
+	
+	toppings = tonumber( toppingsTextField.text )
+	
 	if toppings == 1 then
 		subtotal = 10 + 1
 		calculatePrice()
